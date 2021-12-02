@@ -1,5 +1,6 @@
 from django import forms
+from .models import Doctor
 
 
-class NameForm(forms.Form):
-    name = forms.CharField(label='Name', max_length=100)
+class DoctorForm(forms.Form):
+    doctor = forms.ModelChoiceField(queryset=Doctor.objects.all(), initial=0)

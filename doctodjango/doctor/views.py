@@ -1,9 +1,13 @@
 from django.http import HttpResponse
 from .models import Doctor, Patient, Rdv
+from .forms import DoctorForm
+from django.shortcuts import render
 
 
 def index(request):
-    return HttpResponse("form")
+    context = {}
+    context['form'] = DoctorForm()
+    return render(request, "index.html", context)
 
 
 def doctor(request):
