@@ -24,4 +24,5 @@ class Rdv(models.Model):
     rdv_date = models.DateTimeField('date published')
 
     def __str__(self):
-        return 'Doctor :' + self.doctor.name + ' Patient :' + self.patient.name + 'RDV :' + self.rdv_date.strftime("%H:%M:%S.%f - %b %d %Y")
+        return 'Doctor :' + self.doctor.name + ' Patient :' + self.patient.name + 'RDV :' + self.rdv_date.strftime(
+            "%H:%M:%S.%f - %b %d %Y")

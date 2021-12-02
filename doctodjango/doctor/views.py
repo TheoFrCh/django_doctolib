@@ -5,9 +5,19 @@ from django.shortcuts import render
 
 
 def index(request):
-    context = {}
-    context['form'] = DoctorForm()
-    return render(request, "index.html", context)
+    if request.method == 'POST':
+        form = DoctorForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return render('/')
+    else:
+        form = DoctorForm()
+
+    return render(request, 'index.html', {'form': form})
+
+    #context = {}
+    #context['form'] = DoctorForm()
+    #return render(request, "index.html", context)
 
 
 def doctor(request):
