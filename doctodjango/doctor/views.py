@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from .models import Doctor, Patient, Rdv
 from .forms import DoctorForm
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 
 def index(request):
@@ -9,15 +9,11 @@ def index(request):
         form = DoctorForm(request.POST)
         if form.is_valid():
             form.save()
-        return render('/')
+            return redirect('rdv')
     else:
         form = DoctorForm()
 
     return render(request, 'index.html', {'form': form})
-
-    #context = {}
-    #context['form'] = DoctorForm()
-    #return render(request, "index.html", context)
 
 
 def doctor(request):
